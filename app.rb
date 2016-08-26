@@ -13,12 +13,12 @@ module FormsLab
     end
 
     post '/pirates' do
+    	# raise params.inspect
 		@pirate = Pirate.new(params[:pirate])
 		params[:pirate][:ships].each do |ships_attributes|
 			Ship.new(ships_attributes)
 		end
-		@ship_one = Ship.all[0]
-		@ship_two = Ship.all[1]
+		@ships = Ship.all
 
 		erb :'pirates/show'
     end
